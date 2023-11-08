@@ -1,7 +1,7 @@
 import {BiCalendarCheck, BiCalendar} from 'react-icons/bi'
 import {useState} from 'react'
 
-function Appointment(){
+function AddAppointment(){
   const [appointForm, setAppointmentForm] = useState(false)
   return(
     <div className='text-center' >
@@ -64,7 +64,7 @@ function Appointment(){
                 <textarea className='border-2 border-gray-400 rounded-sm w-80 px-2 py-1 text-gray-500 font-medium text-sm outline-none'></textarea>
               </div>
             </div>
-            <div className='flex justify-end mt-4 mr-9'>
+            <div className='flex justify-end mt-4 mr-6'>
               <button type='submit' 
               className='border-2 border-blue-500 bg-blue-500 hover:bg-white hover:border-2 hover:border-blue-400 hover:text-blue-500 text-white h-9 w-24 rounded-md text-sm font-semibold ease-in-out duration-300'>Submit</button>
             </div>
@@ -76,4 +76,4 @@ function Appointment(){
   )
 }
 
-export default Appointment
+export default AddAppointment
