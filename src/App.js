@@ -5,6 +5,25 @@ import AppointmentInfo from './components/AppointmentInfo'
 import './index.css'
 function App(){
   const [appointmentList, setAppointmentList] = useState([])
+  const [query, setQuery] = useState("")
+  const [sortBy, setSortBy] = useState("petName")
+  const [orderBy, setOrderBy] = useState("asc")
+  const filteredData = appointmentList.filter(
+    item =>{
+      return(
+        item.petName.toLowerCase().includes(query.toLocaleLowerCase()) ||
+        item.ownerName.toLowerCase().includes(query.toLocaleLowerCase()) ||
+        item.aptNotes.toLowerCase().includes(query.toLocaleLowerCase())
+      )
+    }
+  ).sort((a, b)=>{
+    let order = (orderBy === 'asc') ? 1 : -1
+    return(
+      a[sortBy].toLowerCase() < b[sortBy].toLowerCase() 
+      ? -1 * order : 1 * order
+    )
+  })
+
   const fetchData = useCallback(()=>{
     fetch('./data.json')
     .then(res => res.json())
@@ -17,16 +36,23 @@ function App(){
   return(
     <>
       <AddAppointment/>
-      <Search/>
+      <Search
+        query={query}
+        onQueryChange={myQuery => setQuery(myQuery)}
+        orderBy={orderBy}
+        onOrderByChange={mySort => setOrderBy(mySort)}
+        sortBy={sortBy}
+        onSortByChange={mySort => setSortBy(mySort)}
+      />
       <ul className="divide-y divide-gray-400">
-        {appointmentList.map(appointment => (
+        {filteredData.map(appointment => (
           <AppointmentInfo 
             key={appointment.id}
             appointment={appointment}
             onDeleteAppointment={
-              appointmentId =>
+              id =>
               setAppointmentList(appointmentList.filter(appointment =>
-              appointment.id !== appointmentId
+              appointment.id !== id
               ))
             }
           />
