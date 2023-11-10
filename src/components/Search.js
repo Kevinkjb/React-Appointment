@@ -6,38 +6,40 @@ const DropDown = ({toggle, sortBy, orderBy, onOrderByChange, onSortByChange})=>{
     return null
   }
   return(
-    <div className='origin-top-right absolute right-96 mt-2 w-56
-      rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"'>
-        <div >
-          <div className={customStyle} onClick={()=>onSortByChange("petName")}>
-            Pet Name {(sortBy === "petName") && <BiCheck className='my-auto'/>}
+    <div className='relative w-1 mx-auto left-16 sm:-left-9'>
+        <div className='origin-top-right absolute  mt-2 w-56 
+      rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+          <div >
+            <div className={customStyle} onClick={()=>onSortByChange("petName")}>
+              Pet Name {(sortBy === "petName") && <BiCheck className='my-auto'/>}
+            </div>
+            <div className={customStyle} onClick={()=>onSortByChange("ownerName")}>
+              Owner Name {(sortBy === "ownerName") && <BiCheck className='my-auto'/>}
+            </div>
+            <div className={customStyle} onClick={()=>onSortByChange("aptDate")}>
+              Date {(sortBy === "aptDate") && <BiCheck className='my-auto'/>}
+            </div>
           </div>
-          <div className={customStyle} onClick={()=>onSortByChange("ownerName")}>
-            Owner Name {(sortBy === "ownerName") && <BiCheck className='my-auto'/>}
-          </div>
-          <div className={customStyle} onClick={()=>onSortByChange("aptDate")}>
-            Date {(sortBy === "aptDate") && <BiCheck className='my-auto'/>}
-          </div>
-        </div>
 
-        <div className='border-t-2'>
-          <div className={customStyle} onClick={()=>onOrderByChange("asc")}>
-            Asc {(orderBy === "asc") && <BiCheck className='my-auto'/>}
-          </div>
-          <div className={customStyle} onClick={()=>onOrderByChange("desc")}>
-            Desc {(orderBy === "desc") && <BiCheck className='my-auto'/>}
+          <div className='border-t-2'>
+            <div className={customStyle} onClick={()=>onOrderByChange("asc")}>
+              Asc {(orderBy === "asc") && <BiCheck className='my-auto'/>}
+            </div>
+            <div className={customStyle} onClick={()=>onOrderByChange("desc")}>
+              Desc {(orderBy === "desc") && <BiCheck className='my-auto'/>}
+            </div>
           </div>
         </div>
-      </div>
+    </div>
   )
 }
 function Search({query, onQueryChange, sortBy, onSortByChange, orderBy, onOrderByChange}){
   const [toggle, setToggle] = useState(false)
   return(
     <>
-      <div className="mx-auto w-5/12 mt-24 flex">
+      <div className="mx-auto w-144 sm:w-96 mt-24 flex justify-center">
         <input 
-          className='border-2 border-gray-400 rounded-sm w-full px-2 py-1  text-gray-500 font-medium text-sm outline-none' 
+          className='border-2 border-gray-400 rounded-sm w-128 sm:w-96 px-2 py-1  text-gray-500 font-medium text-sm outline-none' 
           placeholder="Search"
           onChange={(e)=>{onQueryChange(e.target.value)}}
           value={query}

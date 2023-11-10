@@ -25,16 +25,16 @@ function AddAppointment({onSendAppointment, lastId}){
     setFormData(clearData)
   }
   return(
-    <div className='text-center' >
-        <div className='mt-4 flex justify-center'>
+    <div className='text-center ' >
+        <div className='mt-4 flex justify-center '>
           <div className='inline-block text-4xl align-text-top text-red-800'>
             <BiCalendar />
           </div>
           <h1 className='inline-block text-3xl align-text-top font-thin pl-1'>Your Appointments</h1>
         </div>
-        <div className='mt-5'>
+        <div className='mt-5 w-full'>
           <button 
-            className={`text-white bg-cyan-700 py-3 px-2 w-5/12 text-left rounded-t-md
+            className={`text-white bg-cyan-700 py-3 px-2 w-144 sm:w-96 text-left rounded-t-md
             ${appointForm ? 'rounded-t-md' : 'rounded-md'}`}
             onClick={()=>{setAppointmentForm(!appointForm)}}
           >
@@ -43,9 +43,9 @@ function AddAppointment({onSendAppointment, lastId}){
             Add Appointment
           </div>
           </button>
-          {appointForm && <div className='w-5/12 border-2 p-5 mx-auto rounded-b-md' >
+          {appointForm && <div className='w-144 sm:w-96 border-2 p-5 mx-auto rounded-b-md' >
             
-            <div className='grid grid-cols-3 py-3 px-2 mt-5 mx-auto'>
+            <div className='grid grid-cols-3 sm:grid-cols-4 py-3 px-2 mt-5 mx-auto w-128 sm:w-120'>
               <div className='px-3 text-left'>
                 <label className='text-gray-600 font-semibold text-sm'>Owner Name</label>
               </div>
@@ -54,10 +54,10 @@ function AddAppointment({onSendAppointment, lastId}){
                 onChange={(e)=> {setFormData({...formData, ownerName: e.target.value})}} 
                 value={formData.ownerName}
                 type='text' 
-                className='border-2 border-gray-400 rounded-sm w-80 px-2 py-1 text-gray-500 font-medium text-sm outline-none'/>
+                className='border-2 border-gray-400 rounded-sm w-80 sm:w-48 px-2 py-1 text-gray-500 font-medium text-sm outline-none'/>
               </div>
             </div>
-            <div className='grid grid-cols-3 py-3 px-2 mx-auto'>
+            <div className='grid grid-cols-3 sm:grid-cols-4 py-3 px-2 mx-auto w-128 sm:w-120'>
               <div className='px-3 text-left'>
                 <label className='text-gray-600 font-semibold text-sm'>Pet Name</label>
               </div>
@@ -66,10 +66,10 @@ function AddAppointment({onSendAppointment, lastId}){
                 onChange={(e)=> {setFormData({...formData, petName: e.target.value})}}
                 value={formData.petName} 
                 type='text' 
-                className='border-2 border-gray-400 rounded-sm w-80 px-2 py-1 text-gray-500 font-medium text-sm outline-none'/>
+                className='border-2 border-gray-400 rounded-sm w-80 sm:w-48 px-2 py-1 text-gray-500 font-medium text-sm outline-none'/>
               </div>
             </div>
-            <div className='grid grid-cols-3 py-3 px-2 mx-auto'>
+            <div className='grid grid-cols-3 sm:grid-cols-4 py-3 px-2 mx-auto w-128 sm:w-120'>
               <div className='px-3 text-left'>
                 <label className='text-gray-600 font-semibold text-sm'>Apt Date</label>
               </div>
@@ -77,11 +77,12 @@ function AddAppointment({onSendAppointment, lastId}){
                 <input 
                   onChange={(e)=> {setFormData({...formData, aptDate: e.target.value})}} 
                   value={formData.aptDate}
-                  type='date' className='border-2 border-gray-400 rounded-sm w-80 px-2 py-1 text-gray-500 font-medium text-sm outline-none'/>
+                  type='date' 
+                  className='border-2 border-gray-400 rounded-sm w-80 sm:w-48 px-2 py-1 text-gray-500 font-medium text-sm outline-none'/>
               </div>
             </div>
-            <div className='grid grid-cols-3 py-3 px-2 mx-auto'>
-              <div className='px-3 text-left'>
+            <div className='grid grid-cols-3 sm:grid-cols-4 py-3 px-2 mx-auto w-128 sm:w-120'>
+              <div className='px-3 text-left '>
                 <label className='text-gray-600 font-semibold text-sm'>Apt Time</label>
               </div>
               <div>
@@ -89,21 +90,23 @@ function AddAppointment({onSendAppointment, lastId}){
                   onChange={(e)=> {setFormData({...formData, aptTime: e.target.value})}}
                   value={formData.aptTime}
                   type='time' 
-                  className='border-2 border-gray-400 rounded-sm w-80 px-2 py-1 text-gray-500 font-medium text-sm outline-none'
+                  className='border-2 border-gray-400 rounded-sm w-80 sm:w-48 px-2 py-1 text-gray-500 font-medium text-sm outline-none'
                 />
               </div>
             </div>
-            <div className='grid grid-cols-3 py-3 px-2 mx-auto'>
+            <div className='grid grid-cols-3 sm:grid-cols-4 py-3 px-2 mx-auto w-128 sm:w-120'>
               <div className='px-3 text-left'>
                 <label className='text-gray-600 font-semibold text-sm'>Appointment Note</label>
               </div>
               <div>
-                <textarea onChange={(e)=> {setFormData({...formData, aptNotes: e.target.value})}} className='border-2 border-gray-400 rounded-sm w-80 px-2 py-1 text-gray-500 font-medium text-sm outline-none'
-                  value={formData.aptNotes}
+                <textarea 
+                onChange={(e)=> {setFormData({...formData, aptNotes: e.target.value})}} 
+                className='border-2 border-gray-400 rounded-sm w-80 sm:w-48 px-2 py-1 text-gray-500 font-medium text-sm outline-none'
+                value={formData.aptNotes}
                 ></textarea>
               </div>
             </div>
-            <div className='flex justify-end mt-4 mr-6'>
+            <div className='flex justify-end mt-4 mr-7'>
               <button 
                 onClick={formDataPublish}
                 type='submit' 
