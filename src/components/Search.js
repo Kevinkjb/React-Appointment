@@ -6,7 +6,8 @@ const DropDown = ({toggle, sortBy, orderBy, onOrderByChange, onSortByChange})=>{
     return null
   }
   return(
-    <div className='w-56 absolute right-96 top-64  shadow-black border-2 bg-white rounded-md text-gray-500 text-sm'>
+    <div className='origin-top-right absolute right-96 mt-2 w-56
+      rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"'>
         <div >
           <div className={customStyle} onClick={()=>onSortByChange("petName")}>
             Pet Name {(sortBy === "petName") && <BiCheck className='my-auto'/>}
