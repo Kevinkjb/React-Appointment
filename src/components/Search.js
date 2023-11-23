@@ -10,7 +10,7 @@ const DropDown = ({toggle, sortBy, orderBy, onOrderByChange, onSortByChange})=>{
         <div className='origin-top-right absolute  mt-2 w-56 
       rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
           <div >
-            <div className={customStyle} onClick={()=>onSortByChange("petName")}>
+            <div className={customStyle} >
               Pet Name {(sortBy === "petName") && <BiCheck className='my-auto'/>}
             </div>
             <div className={customStyle} onClick={()=>onSortByChange("ownerName")}>
